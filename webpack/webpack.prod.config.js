@@ -3,9 +3,8 @@ var S3Plugin = require('webpack-s3-plugin')
 var config = require('./webpack.core.js');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
-
-var s3BucketName = 'component_api_client.com'
-var apiHost = 'localhost:3000/api/v1'
+var s3BucketName = 'thecircleinteractive.com'
+var apiHost = 'https://the-circle-interactive-app.herokuapp.com/api/v1'
 var fileName = 'build/[name]-[chunkhash].js';
 var nodeEnv = 'production';
 var s3CacheString ='max-age=2592000';

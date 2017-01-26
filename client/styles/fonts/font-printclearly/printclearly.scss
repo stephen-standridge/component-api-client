@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'printclearly';
+  src: url('./regular/printclearly.eot');
+  src: url('./regular/printclearly.eot?#iefix') format('embedded-opentype'),
+       url('./regular/printclearly.woff2') format('woff2'),
+       url('./regular/printclearly.woff') format('woff'),
+       url('./regular/printclearly.ttf') format('truetype'),
+       url('./regular/printclearly.svg#PrintClearly') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

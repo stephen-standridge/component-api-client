@@ -1,0 +1,157 @@
+/*
+/////////////////////////////////
+/////default static styles///////
+/////////////////////////////////
+*/
+
+#background__shape {
+	fill: white;
+}
+
+.background__line{
+	clip-path:url(#background__clip);
+	fill:none;
+	stroke:#9652A0;
+	stroke-width:0.5;
+	stroke-miterlimit:10;
+}
+.background__clip{
+	fill:none;
+	stroke:#9652A0;
+	stroke-miterlimit:10;
+}
+.background__box {
+	overflow:visible;
+}
+.background__border{
+	overflow:visible;
+	fill:none;
+	stroke:#9652A0;
+	stroke-width:1.5;
+	stroke-miterlimit:10;
+}
+
+/*
+/////////////////////////////////
+/////default dynamic styles///////
+/////////////////////////////////
+*/
+.green{
+	stroke:#52BC46;
+}
+.purple{
+	stroke:#A745BF;
+}
+
+.background__line {
+	fill:none;
+	stroke-miterlimit:10;
+	stroke-width: 0.7;
+	background-color: transparent;
+	&.inner {
+		opacity: 0.8;
+		animation:backgroundlines_inner 10s linear infinite;
+	}
+	&.middle {
+		opacity: 0.6;
+		animation:backgroundlines_middle 10s linear infinite;
+	}
+	&.outer {
+		opacity: 0.4;
+		animation:backgroundlines_outer 10s linear infinite;
+	}
+}
+
+
+/*
+/////////////////////////////////
+///////////transitions///////////
+/////////////////////////////////
+*/
+
+
+	.background__line{
+		transition: opacity 0.4s ease-in;
+		transition: stroke 0.3s ease-in;
+	}
+
+/*
+/////////////////////////////////
+////////animation timings////////
+/////////////////////////////////
+*/
+
+	/*//animation delays//*/
+	.background__line.inner:nth-child(1),
+	.background__line.middle:nth-child(1),
+	.background__line.outer:nth-child(1) {
+		animation-delay:.5s;
+	}
+	.background__line.inner:nth-child(2),
+	.background__line.middle:nth-child(2),
+	.background__line.outer:nth-child(2) {
+		animation-delay:1s;
+	}
+	.background__line.inner:nth-child(3),
+	.background__line.middle:nth-child(3),
+	.background__line.outer:nth-child(3) {
+		animation-delay:1.5s;
+	}
+	.background__line.inner:nth-child(4),
+	.background__line.middle:nth-child(4),
+	.background__line.outer:nth-child(4) {
+		animation-delay:2s;
+	}
+	.background__line.inner:nth-child(5),
+	.background__line.middle:nth-child(5),
+	.background__line.outer:nth-child(5) {
+		animation-delay:2.5s;
+	}
+	.background__line.inner:nth-child(6),
+	.background__line.middle:nth-child(6),
+	.background__line.outer:nth-child(6) {
+		animation-delay:3s;
+	}
+	.background__line.inner:nth-child(7),
+	.background__line.middle:nth-child(7),
+	.background__line.outer:nth-child(7) {
+		animation-delay:3.5s;
+	}
+	.background__line.inner:nth-child(8),
+	.background__line.middle:nth-child(8),
+	.background__line.outer:nth-child(8) {
+		animation-delay:4s;
+	}
+	.background__line.inner:nth-child(9),
+	.background__line.middle:nth-child(9),
+	.background__line.outer:nth-child(9) {
+		animation-delay:4.5s;
+	}
+
+
+
+/*
+/////////////////////////////////
+////////////keyframes////////////
+/////////////////////////////////
+*/
+	/*//green and purple//*/
+
+	@keyframes backgroundlines_outer {
+		0%,100%   {opacity: .8;}
+		25%			  {opacity: .4;}
+		75%			  {opacity: .2;}
+	}
+
+	@keyframes backgroundlines_middle{
+		0%,100%   {opacity: .4;}
+		25%			  {opacity: .8;}
+		75%			  {opacity: .2;}
+	}
+
+	@keyframes backgroundlines_inner{
+		0%,100%   {opacity: .2;}
+		25%			  {opacity: .4;}
+		75%			  {opacity: .8;}
+	}
+

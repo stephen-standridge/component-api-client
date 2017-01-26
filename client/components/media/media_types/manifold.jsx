@@ -135,6 +135,7 @@ class ManifoldMedia extends React.Component {
     if (!manifold) return <div className={this.classNamesFor('not_found')} />
 
     const { slug } = manifold;
+
     return <div className={`${slug}_piece manifold`} />
   }
 

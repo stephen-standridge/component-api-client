@@ -1,0 +1,70 @@
+svg#ouroboros{
+	cursor: pointer;
+}
+
+/*
+/////////////////////////////////
+//////logo linework styles///////
+/////////////////////////////////
+*/	
+
+/*//shared presets//*/
+.ouroboros__fill{
+	fill:#FFFFFF;
+}
+.ouroboros__fill--none{
+	fill:none;
+}	
+.ouroboros__stroke--bold, .ouroboros__stroke-animation--bold{
+	stroke-width:1.5;
+	stroke-miterlimit:10;		
+}
+.ouroboros__stroke, .ouroboros__stroke-animation{
+	stroke-width:1.0;
+	stroke-miterlimit:10;		
+}	
+.ouroboros__rotate{
+	transform-origin: 50% 50%;
+}
+
+/*
+/////////////////////////////////
+///////////transitions///////////
+/////////////////////////////////
+*/		
+
+.ouroboros__stroke{
+	transition: opacity 0.4s ease-in, 
+							stroke 0.6s ease-in;
+}	
+.ouroboros__stroke-animation, 
+.ouroboros__stroke-animation--bold, 
+.ouroboros__stroke-animation--thin{
+	transition: opacity 0.4s ease-in, 
+							stroke 0.6s ease-in,
+							stroke-dasharray 0.4s ease-in,
+							stroke-dashoffset 0.3s ease-in;
+}	
+/*//positional presets//*/
+.ouroboros__stroke-animation.purple, 
+.ouroboros__stroke-animation--bold.purple, 
+.ouroboros__stroke-animation--thin.purple{
+	stroke-dasharray: 0,30;
+	stroke-dashoffset: 30;
+}
+
+.ouroboros__stroke-animation.green,
+.ouroboros__stroke-animation--bold.green,
+.ouroboros__stroke-animation--thin.green{
+	stroke-dasharray: 30,0;
+	stroke-dashoffset: 30;
+}
+
+
+/*
+/////////////////////////////////
+///////////transitions///////////
+/////////////////////////////////
+*/
+								  
+								  

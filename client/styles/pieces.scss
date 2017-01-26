@@ -24,17 +24,26 @@
 	-webkit-transition: width 0.3s; /* Safari */
   transition: width 0.3s;
 	&.active {
-		width: 200px;
+		width: 210px;
 	}
 }
 .piece__collection {
 	padding-left: 11px;
-	width: 189px;
+	width: 199px;
 	.article__title {
-		font-size: 1.2rem;
+		font-family: 'clemente';
+		font-weight: 500;
+		letter-spacing: 1px;
+		font-size: 1.5rem;
 		margin-bottom: 5px;
 	}
 	.article__body {
+		font-weight: light;
+		font-size: 0.9rem;
+    letter-spacing: 0.3px;
+		font-family: 'Arial';
 		line-height: 1.2em;
+		padding-bottom: 10px;
+		padding-right: 10px;
 	}
 }

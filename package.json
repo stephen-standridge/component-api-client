@@ -43,6 +43,7 @@
     "redux-thunk": "^2.1.0",
     "remarkable": "^1.7.1",
     "sass-loader": "^4.0.2",
+    "shallowequal": "^0.2.2",
     "three": "^0.84.0",
     "validator": "^8.0.0",
     "webpack": "^3.4.1",

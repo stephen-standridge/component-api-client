@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'clemente';
+  src: url('./book/clementepdag-book.eot');
+  src: url('./book/clementepdag-book.woff2') format('woff2'),
+       url('./book/clementepdag-book.eot?#iefix') format('embedded-opentype'),
+       url('./book/clementepdag-book.woff') format('woff'),
+       url('./book/clementepdag-book.ttf') format('truetype'),
+       url('./book/clementepdag-book.svg#ClementePDag-Book') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'clemente';
+  src: url('./extralight/clementepdac-extralight.eot');
+  src: url('./extralight/clementepdac-extralight.woff2') format('woff2'),
+       url('./extralight/clementepdac-extralight.eot?#iefix') format('embedded-opentype'),
+       url('./extralight/clementepdac-extralight.woff') format('woff'),
+       url('./extralight/clementepdac-extralight.ttf') format('truetype'),
+       url('./extralight/clementepdac-extralight.svg#ClementePDag-ExtraLight') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'clemente';
+  src: url('./hairline/clementepdaa-hairline.eot');
+  src: url('./hairline/clementepdaa-hairline.woff2') format('woff2'),
+       url('./hairline/clementepdaa-hairline.eot?#iefix') format('embedded-opentype'),
+       url('./hairline/clementepdaa-hairline.woff') format('woff'),
+       url('./hairline/clementepdaa-hairline.ttf') format('truetype'),
+       url('./hairline/clementepdaa-hairline.svg#ClementePDaa-Hairline') format('svg');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'clemente';
+  src: url('./light/clementepdae-light.eot');
+  src: url('./light/clementepdae-light.woff2') format('woff2'),
+       url('./light/clementepdae-light.eot?#iefix') format('embedded-opentype'),
+       url('./light/clementepdae-light.woff') format('woff'),
+       url('./light/clementepdae-light.ttf') format('truetype'),
+       url('./light/clementepdae-light.svg#ClementePDae-Light') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}

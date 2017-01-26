@@ -2,7 +2,8 @@ import { fromJS } from 'immutable';
 import { COMPONENT_ACTIONS } from '../actions/action_types'
 import { uniq } from 'lodash';
 
-const initialState = fromJS({})
+const initialState = fromJS({
+})
 
 export default function update(state = initialState, action) {
 	const { type, meta, payload } = action;

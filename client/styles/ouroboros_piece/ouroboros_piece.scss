@@ -1,0 +1,23 @@
+.ouroboros__piece {
+	flex-direction: column;
+	.information__wrapper {
+		justify-content: center;
+		margin-bottom: 40px;
+
+	}
+	.information__text {
+    padding: 17px;
+    line-height: 1px;
+    font-size: 27px;
+    font-family: clemente;
+    font-weight: 300;	
+    background: rgba(255,255,255,0.75);
+		transition: color 0.4s;    
+		&.green{
+			color:#52BC46;
+		}
+		&.purple{
+			color:#A745BF;
+		}    
+	}
+}

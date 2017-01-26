@@ -9,6 +9,8 @@
     justify-content: flex-end;
 	}
 	.article__title {
+		font-family: 'clemente';
+		letter-spacing: 1px;
 		font-size: 2.25rem;
 		flex-basis: 45px;
 		color: rgba(100,100,100,0.5);
@@ -36,19 +38,7 @@
 
 	.link__media {
 		margin-right: 10px;
-		padding: 0px 4px;
-		&:after {
-			content: 'copied';
-			position: absolute;
-			right: -50px;
-			opacity: 0;
-		}
-		&.copied:after {
-			animation: fadeIn 1s;
-		}
-		&.copied_again:after {
-			animation: otherFade 1s;
-		}
+		padding: 3px 8px;
 	}
 }
 

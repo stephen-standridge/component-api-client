@@ -1,0 +1,59 @@
+.effects__stroke{
+	fill: none;
+	transition: stroke .2s;
+	animation-duration: .1s;
+	transition: opacity .2s;
+}
+.effects__stroke--5{
+	stroke-width: 1.5px;
+	animation-delay: .25s;
+	transition-delay: .25s;
+}
+.effects__stroke--4{
+	stroke-width: 1.25px;
+	animation-delay: .2s;
+	transition-delay: .2s;
+}
+.effects__stroke--3{
+	stroke-width: 1.0px;
+	animation-delay: .15s;
+	transition-delay: .15s;
+}
+.effects__stroke--2{
+	stroke-width: 0.75px;
+	animation-delay: .1s;
+	transition-delay: .1s;
+}
+.effects__stroke--1{
+	stroke-width: 0.5px;
+	animation-delay: .05s;
+	transition-delay: .05s;
+}
+.effects__stroke.purple{
+	animation-name:effects_purple;
+	animation-fill-mode: forwards;
+}
+.effects__stroke.green{
+	animation-name:effects_green;
+	animation-fill-mode: forwards;
+}
+/*
+/////////////////////////////////
+////////////keyframes////////////
+/////////////////////////////////
+*/
+	/*//green and purple//*/
+
+	@keyframes effects_green {
+		0%			  {opacity: 1;}
+		25%			  {opacity: .8;}
+		75%			  {opacity: .2;}
+		100%			{opacity: 0;}
+	}
+
+	@keyframes effects_purple {
+		0%			  {opacity: 1;}
+		25%			  {opacity: .8;}
+		75%			  {opacity: .2;}
+		100%			{opacity: 0;}
+	}

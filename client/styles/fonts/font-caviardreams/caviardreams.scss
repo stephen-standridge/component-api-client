@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'caviardreams';
+  src: url('./regular/caviardreams.eot');  
+  src: url('./regular/caviardreams.woff') format('woff'),
+			 url('./regular/caviardreams.woff2') format('woff2'),
+       url('./regular/caviardreams.ttf') format('truetype'),
+       url('./regular/caviardreams.eot?#iefix') format('embedded-opentype'),
+       url('./regular/caviardreams.svg#CaviarDreams') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'caviardreams';
+  src: url('./bold/caviardreams_bold.eot');
+  src: url('./bold/caviardreams_bold.woff2') format('woff2'),
+       url('./bold/caviardreams_bold.eot?#iefix') format('embedded-opentype'),
+       url('./bold/caviardreams_bold.woff') format('woff'),
+       url('./bold/caviardreams_bold.ttf') format('truetype'),
+       url('./bold/caviardreams_bold.svg#CaviarDreams-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}

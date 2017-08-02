@@ -9,7 +9,7 @@ import { PieceMetaComponent } from '../piece_meta';
 const OuroborosPieceComponent = React.createClass({
 	render(){
 		const { color, ouroborosSize } = this.state;
-		const { component } = this.props;
+		const { component, children } = this.props;
 
 		return<div className="piece__container piece__container--ouroboros">
 			<div className="piece__wrapper piece__wrapper--ouroboros clickable">
@@ -33,6 +33,7 @@ const OuroborosPieceComponent = React.createClass({
 						strokeClass={''}
 						fillClass={''} />
 		  	</svg>
+		  	{ children }
 		  </div>
 			<PieceMetaComponent component={component} />
 		</div>

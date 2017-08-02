@@ -45,7 +45,7 @@ class MondrianPieceComponent extends React.Component {
   }
   render(){
     const { structure, offset } = this.state;
-    const { component } = this.props;
+    const { component, children } = this.props;
     const cells = structure.get('data').toJS();
     const root = structure.getIn(['data', 0, 'value']).toJS();
     return <div className="piece__container piece__container--mondrian">
@@ -54,6 +54,7 @@ class MondrianPieceComponent extends React.Component {
                     cells={cells}
                     root={root}
                     offset={offset} />
+        { children }
       </div>
       <PieceMetaComponent component={component} />
     </div>

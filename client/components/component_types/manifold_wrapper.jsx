@@ -15,12 +15,21 @@ class ManifoldWrapperComponent extends React.Component {
 		const { slug } = component;
 		return <div className={`piece__container piece__container--${slug} ${ classNames }`}>
 			<div className={`piece__wrapper piece__wrapper--${slug} clickable`} >
-				{this.renderMedia()}
-				{children}
+				<div className="piece__left">
+					<div className="piece__content">
+						{this.renderMedia()}
+					</div>
+					<div className="piece__controls">
+						{children}
+					</div>
+				</div>
+				<div className="piece__right">
+					<PieceMetaComponent component={component} />
+				</div>
 			</div>
-			<PieceMetaComponent component={component} />
     </div>
 	}
 }
 
 export { ManifoldWrapperComponent }
+

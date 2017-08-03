@@ -13,29 +13,37 @@ const OuroborosPieceComponent = React.createClass({
 
 		return<div className="piece__container piece__container--ouroboros">
 			<div className="piece__wrapper piece__wrapper--ouroboros clickable">
-				<svg id="ouroboros"
-					height={this.totalHeight()}
-					width={this.totalWidth()}
-					onClick={this.changeColor}>
+				<div className="piece__left">
+					<div className="piece__content">
+						<svg id="ouroboros"
+							height={this.totalHeight()}
+							width={this.totalWidth()}
+							onClick={this.changeColor}>
 
-					<BackgroundLines {...this.state}
-						colorClass={color}
-						outerClass={'outer'}
-						innerClass={'inner'}
-						middleClass={'middle'} />
+							<BackgroundLines {...this.state}
+								colorClass={color}
+								outerClass={'outer'}
+								innerClass={'inner'}
+								middleClass={'middle'} />
 
-					<Effects {...this.state}
-						colorClass={color} />
-					<Ouroboros {...this.state}
-						colorClass={color}
-						width={ouroborosSize}
-						height={ouroborosSize}
-						strokeClass={''}
-						fillClass={''} />
-		  	</svg>
-		  	{ children }
+							<Effects {...this.state}
+								colorClass={color} />
+							<Ouroboros {...this.state}
+								colorClass={color}
+								width={ouroborosSize}
+								height={ouroborosSize}
+								strokeClass={''}
+								fillClass={''} />
+				  	</svg>
+				  </div>
+				  <div className="piece__controls">
+			  	{ children }
+			  	</div>
+		  	</div>
+		  	<div className="piece__right">
+		  		<PieceMetaComponent component={component} />
+		  	</div>
 		  </div>
-			<PieceMetaComponent component={component} />
 		</div>
 	},
 	getInitialState() {

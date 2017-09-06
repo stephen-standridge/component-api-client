@@ -14,13 +14,10 @@ class ManifoldWrapperComponent extends React.Component {
 		const { component, onPrev, onNext, classNames, isActive, children } = this.props;
 		const { slug } = component;
 		return <div className={`piece__container piece__container--${slug} ${ classNames }`}>
-			<div className={`piece__wrapper piece__wrapper--${slug} clickable`} >
+			<div className={`piece__wrapper piece__wrapper--${slug}`} >
 				<div className="piece__left">
 					<div className="piece__content">
 						{this.renderMedia()}
-					</div>
-					<div className="piece__controls">
-						{children}
 					</div>
 				</div>
 				<div className="piece__right">

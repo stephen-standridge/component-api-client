@@ -12,7 +12,7 @@ const OuroborosPieceComponent = React.createClass({
 		const { component, children } = this.props;
 
 		return<div className="piece__container piece__container--ouroboros">
-			<div className="piece__wrapper piece__wrapper--ouroboros clickable">
+			<div className="piece__wrapper piece__wrapper--ouroboros">
 				<div className="piece__left">
 					<div className="piece__content">
 						<svg id="ouroboros"
@@ -36,9 +36,6 @@ const OuroborosPieceComponent = React.createClass({
 								fillClass={''} />
 				  	</svg>
 				  </div>
-				  <div className="piece__controls">
-			  	{ children }
-			  	</div>
 		  	</div>
 		  	<div className="piece__right">
 		  		<PieceMetaComponent component={component} />

@@ -49,16 +49,13 @@ class MondrianPieceComponent extends React.Component {
     const cells = structure.get('data').toJS();
     const root = structure.getIn(['data', 0, 'value']).toJS();
     return <div className="piece__container piece__container--mondrian">
-      <div className="piece__wrapper piece__wrapper--mondrian clickable">
+      <div className="piece__wrapper piece__wrapper--mondrian">
         <div className="piece__left">
           <div className="piece__content">
             <Divisible divide={this.createChildren.bind(this)}
                         cells={cells}
                         root={root}
                         offset={offset} />
-          </div>
-          <div className="piece__controls">
-            { children }
           </div>
         </div>
         <div className="piece__right">

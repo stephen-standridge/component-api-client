@@ -4,12 +4,10 @@ const useTag = '<use xlink:href="#background__shape" />';
 const BackgroundLines = React.createClass({
 	render(){
 		const {
-			middleClass, 
-			outerClass, 
-			innerClass, 
-			colorClass, 
-			hoverXClass, 
-			hoverYClass
+			middleClass,
+			outerClass,
+			innerClass,
+			colorClass
 		} = this.props;
 
 		return(
@@ -17,7 +15,7 @@ const BackgroundLines = React.createClass({
 				<defs>
 					<rect id="background__shape" x="56.7" y="29.1" width={this.props.width} height={this.props.height}/>
 				</defs>
-				<g className={`background__border ${colorClass} ${hoverXClass} {hoverYClass}`} dangerouslySetInnerHTML={{__html: useTag }}>
+				<g className={`background__border ${colorClass}`} dangerouslySetInnerHTML={{__html: useTag }}>
 				</g>
 				<clipPath id="background__clip" dangerouslySetInnerHTML={{__html: useTag }}>
 				</clipPath>

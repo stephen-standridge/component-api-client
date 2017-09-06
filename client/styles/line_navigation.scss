@@ -84,11 +84,8 @@
 	flex: 1;
 }
 .line__items {
-	height: 100%;//mobile?
-
 	display: flex;
-	// flex-basis: 670px;
-	flex-shrink: 0;
+	height: 100%;
 	position: relative;
 }
 

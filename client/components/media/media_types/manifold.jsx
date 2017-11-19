@@ -88,9 +88,9 @@ class ManifoldMedia extends React.Component {
   }
   clearManifold(prevProps){
     const { isActive } = this.props;
-    const { manifold } = prevProps;
+    const { manifold } = prevProps.manifold ? prevProps : this.props;
     const { slug } = manifold;
-    const versionId = this.getVersionId(prevProps);
+    const versionId = this.getVersionId(prevProps.manifold ? prevProps : this.props);
     if (!versionId || !slug) return;
     this.Manifold.unload(`${slug}_${versionId}`);
     if (this.sciptElement) {

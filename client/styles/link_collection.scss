@@ -1,0 +1,40 @@
+.link-collection__wrapper {
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+}
+.link-collection__information {
+  padding: 0 10px 0 0;
+}
+
+.link-collection__links {
+  align-items: flex-end;
+
+  .link__media {
+    margin-right: 10px;
+    padding: 3px 8px;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes otherFade {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

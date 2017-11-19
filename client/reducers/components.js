@@ -31,7 +31,7 @@ export default function update(state = initialState, action) {
 				})
 				component.collections = uniq(collections);
 				components && components.forEach((c) => {
-					state = state.set(c.slug, fromJS(Object.assign(c, { loading: false, needsLoad: true })))
+					state = state.set(c.slug, fromJS(Object.assign(c, { loading: false, needsLoad: true, error: false })))
 				})
 				state = state.set(slug, fromJS(component));
 				break;
@@ -39,14 +39,14 @@ export default function update(state = initialState, action) {
 		case COMPONENT_ACTIONS.REQUESTED:
 			{
 				const { slug } = meta;
-				state = state.update(slug, (c=fromJS({}))=> c.merge(fromJS({ loading: true, needsLoad: false })));
+				state = state.update(slug, (c=fromJS({}))=> c.merge(fromJS({ loading: true, needsLoad: false, error: false })));
 				break;
 			}
 		case COMPONENT_ACTIONS.FAILURE:
 			{
 				const { slug } = meta;
 				const { error } = payload;
-				state = state.update(slug, (c=fromJS({}))=> c.merge(fromJS({ loading: false, needsLoad: true })));
+				state = state.update(slug, (c=fromJS({}))=> c.merge(fromJS({ loading: false, needsLoad: true, error: error.message })));
 				break;
 			}
 	}

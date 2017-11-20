@@ -8,7 +8,7 @@ import { PieceMetaComponent } from '../piece_meta';
 
 const OuroborosPieceComponent = React.createClass({
 	render(){
-		const { color, ouroborosSize } = this.state;
+		const { color, ouroborosScale, backgroundSize, backgroundScaleX, backgroundScaleY } = this.state;
 		const { component, children } = this.props;
 
 		return<div className="piece__container piece__container--ouroboros">
@@ -24,14 +24,19 @@ const OuroborosPieceComponent = React.createClass({
 								colorClass={color}
 								outerClass={'outer'}
 								innerClass={'inner'}
-								middleClass={'middle'} />
+								middleClass={'middle'}
+								width={backgroundSize}
+								height={backgroundSize}
+								scaleX={2.0}
+								scaleY={2.0} />
 
 							<Effects {...this.state}
-								colorClass={color} />
+								colorClass={color}
+								width={backgroundSize}
+								height={backgroundSize}/>
 							<Ouroboros {...this.state}
 								colorClass={color}
-								width={ouroborosSize}
-								height={ouroborosSize}
+								scale={ouroborosScale}
 								strokeClass={''}
 								fillClass={''} />
 				  	</svg>
@@ -45,11 +50,14 @@ const OuroborosPieceComponent = React.createClass({
 	},
 	getInitialState() {
 	    return {
-		    width: 320,
-		    height: 600,
-		    paddingWidth: 115,
-		    paddingHeight: 50,
-		    ouroborosSize: 574,
+		    width: 768,
+		    height: 768,
+		    paddingWidth: 0,
+		    paddingHeight: 0,
+		    ouroborosScale: 768/480,
+		    backgroundSize: 600,
+		    backgroundScaleX: 768/320,
+		    backgroundScaleY: 768/600,
 		    color: 'purple' }
 	},
 	changeColor(){

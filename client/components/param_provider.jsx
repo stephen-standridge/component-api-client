@@ -31,7 +31,7 @@ class ParamProvider extends React.Component {
       console.warn(`attempted to re-register component with slug ${slug}`);
       return;
     }
-    if (other === false) {
+    if (other === false || other === undefined) {
       const index = this.indices.push(slug);
       this.registered[slug] = index - 1;
     } else {
@@ -48,7 +48,7 @@ class ParamProvider extends React.Component {
 
   _unregisterComponent(slug) {
     const atIndex = this.registered[slug];
-    if(!atIndex) {
+    if(isNaN(Number(atIndex))) {
       console.warn(`attempted to unregister component with slug ${slug} but failed`);
       return;
     }

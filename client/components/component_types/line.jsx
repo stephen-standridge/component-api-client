@@ -10,13 +10,16 @@ class LineComponent extends React.Component {
 
 		const nextIndex = (selectedIndex + 1);
 		const nextState = nextIndex <= component.states.length - 1 ? component.states[nextIndex] : component.states[0];
-
+		console.warn(component)
 		return <div className={`line__container ${classNames} clickable`}>
 			<div className="line__items">
 				{ component && component.views.map((c, index) => {
+					let isLongEnough = component.views.length > 1;
+					let isFirst = index == 0;
+					let isLast = index == component.views.length - 1;
 					let active = c.slug == componentState;
-					let prev = c.slug == prevState;
-					let next = c.slug == nextState;
+					let prev = c.slug == (isLongEnough && !isFirst) && prevState;
+					let next = c.slug == (isLongEnough && !isLast) && nextState;
 					const classNames = makeClassNames("line__item", { active, next, prev })
 					if (active || prev || next) {
 						return <div key={index} className={classNames} >

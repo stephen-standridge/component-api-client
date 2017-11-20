@@ -47,6 +47,7 @@ export function fetch(slug='index'){
 				const [m_o_t_promises, m_o_t_types] = fetchMedia(media_vals);
 				m_o_t_promises.length && Promise.all(m_o_t_promises).then((media_of_type_snaps) => {
 					const media_of_type_vals = media_of_type_snaps.map((m_o_t_snap) => m_o_t_snap.val());
+
 					m_o_t_types.forEach((type, index) => {
 						payload[type].push(media_of_type_vals[index]);
 					})
@@ -75,7 +76,7 @@ function fetchMedia(media_vals){
 
 function fetchVersions(data_vals) {
 	return data_vals.reduce((sum, d_val) => {
-		let data_type = version_types[d_val.type];
+		let data_type = d_val && version_types[d_val.type];
 		if(data_type && d_val[data_type]) {
 			Object.keys(d_val[data_type]).forEach((key) => {
 				sum[0].push(database.ref(`${data_type}/${key}`).once('value'));

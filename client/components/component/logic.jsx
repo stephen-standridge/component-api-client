@@ -15,34 +15,35 @@ class ComponentLogic extends React.Component {
 		this.state = { current: undefined };
 	}
 
-	componentWillUnmount() {
+	componentWillUnmount(args) {
+		console.warn(args)
 		const { slug, component } = this.props;
 		const options = component && component.options;
 		const withHistory = options && options.history;
 		const { unregister, isRegistered, getParam, setParam } = this.context;
 		const currentState = withHistory ? getParam(slug) : this.state.current;
 
-		if (withHistory && isRegistered(slug)) {
+		if (withHistory && isRegistered(slug) ) {
 			setParam(slug, '')
 			unregister(slug)
 		}
 	}
 
-	handleProps({ component, slug, fetch, requested } = this.props) {
+	handleProps({ component, slug, fetch, requested, active } = this.props) {
 		const { register, setParam, getParam, isRegistered, unregister } = this.context;
 		if (!component || component.needsLoad) {
 			requested(slug);
 			fetch(slug);
 		}
 		const options = component && component.options;
-		const withHistory = options && options.history;
+		const withHistory = options && options.history && active;
 
 		const currentComponent = this.props.component;
 		const currentSlug = this.props.slug;
 		const currentOptions = currentComponent && currentComponent.options;
 		const withHistoryCurrently = currentOptions && currentOptions.history;
 
-		if (withHistory && !isRegistered(slug)) {
+		if (withHistory && !isRegistered(slug) && active) {
 			if (isRegistered(currentSlug)) {
 				//if the current component is registered, switch the registration it
 				register(slug, otherSlug);
@@ -59,17 +60,17 @@ class ComponentLogic extends React.Component {
 	}
 
 	_setComponentState(current) {
-		const { slug, component } = this.props;
+		const { slug, component, active } = this.props;
 		const { setParam } = this.context;
-		const withHistory = component && component.options && component.options.history;
+		const withHistory = component && component.options && component.options.history && active;
 		return this.setState({ current }, () =>{ if (withHistory) setParam(slug, current) })
 	}
 
 	_getComponentState() {
-		const { slug, component } = this.props;
+		const { slug, component, active } = this.props;
 		const { getParam } = this.context;
 		const { current } = this.state;
-		const withHistory = component && component.options && component.options.history;
+		const withHistory = component && component.options && component.options.history && active;
 		return withHistory ? getParam(slug) : current;
 	}
 
@@ -84,7 +85,7 @@ class ComponentLogic extends React.Component {
 
 		if (!components[component_type]) {
 			component_type = 'DefaultComponent';
-		}			console.warn(component)
+		}
 
 		const ComponentOfType = components[component_type];
 		if (component.error) {

@@ -2,9 +2,10 @@ import '../../../styles/ouroboros_piece/ouroboros_lines.css';
 
 const Ouroboros = React.createClass({
 	render(){
-		const { colorClass, strokeClass, fillClass, width, height } = this.props;
+		const { colorClass, strokeClass, fillClass, scale } = this.props;
 		return(
-			<g className="ouroboros__rotate">
+			<g transform={`translate(0, -100)`}>
+			<g className="ouroboros__rotate" transform={`scale(${scale})`}>
 				<path className={`ouroboros__fill ouroboros__stroke--bold ${colorClass} ${fillClass} ${strokeClass}`}
 					d="M206.3,452.1c-23.8-2-50.4-10-70.8-21l-24.4,14.3l0.2-30.2c-19.4-14.8-36.2-33.7-48.9-55.1H35.6L50,335.7
 					c-8.3-19.6-14.2-41.8-15.7-63.9L9.7,258.3l25.4-14.3c2.1-22.8,8.4-44.9,18.8-64.1l-13.3-22.7l29.2,0.2h0
@@ -102,6 +103,7 @@ const Ouroboros = React.createClass({
 					l16.4-8.7l-0.2,0.4l-7.6,13.1c12.3,6.2,19.7,10,33.5,12.2"/>
 				<polyline className={`ouroboros__stroke-animation ouroboros__fill--none ${colorClass} ${strokeClass}`}
 					points="258.6,351.2 216.7,390.8 184.7,390.8 203.6,408.9 "/>
+			</g>
 			</g>
 		)
 	}

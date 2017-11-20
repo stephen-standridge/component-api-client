@@ -29,11 +29,16 @@ export default function update(state = initialState, action) {
 					}
 					component.media.push(m)
 				})
+				let componentError ='';
 				component.collections = uniq(collections);
 				components && components.forEach((c) => {
-					state = state.set(c.slug, fromJS(Object.assign(c, { loading: false, needsLoad: true, error: false })))
+					if(c) {
+						state = state.set(c.slug, fromJS(Object.assign(c, { loading: false, needsLoad: true, error: false })))
+					} else {
+						componentError = 'could not find component'
+					}
 				})
-				state = state.set(slug, fromJS(component));
+				state = state.set(slug, fromJS(component).merge(fromJS({ error: componentError})));
 				break;
 			}
 		case COMPONENT_ACTIONS.REQUESTED:

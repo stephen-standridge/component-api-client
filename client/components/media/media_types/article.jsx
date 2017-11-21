@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Remarkable from 'remarkable';
 
-var md = new Remarkable({linkTarget: "_blank"});
+var md = new Remarkable({html: true, breaks: true, linkTarget: "_blank"});
 
 class ArticleMedia extends React.Component {
 	constructor(props){
@@ -10,7 +10,7 @@ class ArticleMedia extends React.Component {
 
 	classNamesFor(part){
 		const { classNames } = this.props;
-		return `article__${part} ${classNames && classNames[part] || ''}}`
+		return `article__${part} ${classNames && classNames[part] || ''}`
 	}
 	render(){
 		const { slug, article, classNames, needsCreate } = this.props;

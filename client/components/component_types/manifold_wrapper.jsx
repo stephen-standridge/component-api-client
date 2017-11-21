@@ -20,9 +20,7 @@ class ManifoldWrapperComponent extends React.Component {
 						{this.renderMedia()}
 					</div>
 				</div>
-				<div className="piece__right">
-					<PieceMetaComponent component={component} />
-				</div>
+				<PieceMetaComponent component={component} />
 			</div>
     </div>
 	}

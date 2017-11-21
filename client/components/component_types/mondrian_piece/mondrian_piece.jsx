@@ -58,9 +58,7 @@ class MondrianPieceComponent extends React.Component {
                         offset={offset} />
           </div>
         </div>
-        <div className="piece__right">
-          <PieceMetaComponent component={component} />
-        </div>
+        <PieceMetaComponent component={component} />
       </div>
     </div>
   }

@@ -16,8 +16,8 @@ const OuroborosPieceComponent = React.createClass({
 				<div className="piece__left">
 					<div className={`piece__content ${color}`}>
 						<svg id="ouroboros"
-							height={this.totalHeight()}
-							width={this.totalWidth()}
+							height={500}
+							width={500}
 							onClick={this.changeColor}
 							viewBox={`0 0 ${this.totalWidth()} ${this.totalHeight()}`}>
 
@@ -43,9 +43,7 @@ const OuroborosPieceComponent = React.createClass({
 				  	</svg>
 				  </div>
 		  	</div>
-		  	<div className="piece__right">
-		  		<PieceMetaComponent component={component} />
-		  	</div>
+	  		<PieceMetaComponent component={component} />
 		  </div>
 		</div>
 	},

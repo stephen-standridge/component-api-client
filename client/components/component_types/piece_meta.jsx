@@ -6,42 +6,36 @@ import { capitalize } from 'lodash';
 class PieceMetaComponent extends React.Component {
 	constructor(props){
 		super(props);
-		this.state = { active: {} };
-	}
-	toggleActive(part){
-		this.setState(({ active })=>{
-			return Object.assign({ active }, { active: { [part]: !active[part] }})
-		})
 	}
 	classNamesFor(part){
 		const { classNames } = this.props;
-		const { active } = this.state;
 
-		return `piece__${part} ${classNames && classNames[part] || ''} ${active[part] ? 'active' : ''}`
+		return `piece__${part} ${classNames && classNames[part] || ''} `
 	}
 	render() {
 		const { component, isActive } = this.props;
 		const { slug } = component;
-		console.warn(component)
-		return <div className={`piece__meta--${slug} ${this.classNamesFor('meta')}` }>
-			  { component.collections.map((collection, i)=> {
-			  	let classNames = `piece__collection--wrapper piece__${collection}--wrapper clickable ${this.classNamesFor(collection)}`;
-			  	return collection && <div className={classNames} key={i} onClick={this.toggleActive.bind(this, collection)}>
-			  		<div className={`${this.classNamesFor('collection')}`} >
-				  		{ component[collection] && component[collection].map((m, i)=>{
+		console.error(component)
+		return <div className={`piece__right ${component.collections.length > 0 && 'visible'}`}>
+			<div className={`piece__meta--${slug} ${this.classNamesFor('meta')}` }>
 
-				  			let MediaOfType = m.type == 'component' ? ComponentCreator : media_component_types[capitalize(m.type)];
-				  			if (!MediaOfType){
-				  				console.error(`could not find component type ${m.type} to render for ${m.slug}.`)
-				  				return
-				  			}
-				  			return <MediaOfType slug={m.slug} key={i} isActive={isActive}
-				  		/>
+			  	{ component.links && <div className={`piece__collection--wrapper piece__links--wrapper clickable ${this.classNamesFor('links')}`} key={'links'}>
+			  		<div className={`${this.classNamesFor('collection')}`} >
+				  		{ component.links.map((m, i)=>{
+				  			return <ComponentCreator slug={m.slug} key={i}/>
 				  		})}
 			  		</div>
-			  	</div>
-			  }) }
+			  	</div> }
+			  	{ component.description && <div className={`piece__collection--wrapper piece__description--wrapper clickable ${this.classNamesFor('description')}`} key={'description'}>
+			  		<div className={`${this.classNamesFor('collection')}`} >
+				  		{ component.description.map((m, i)=>{
+				  			let MediaOfType = media_component_types[capitalize(m.type)];
+				  			return <MediaOfType slug={m.slug} key={i}/>
+				  		})}
+			  		</div>
+			  	</div> }
 		  </div>
+	  </div>
 	}
 }
 

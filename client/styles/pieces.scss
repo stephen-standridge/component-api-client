@@ -2,6 +2,16 @@
 .piece__container {
 	height: 100%; //mobile
 	width: 100%; //mobile
+	.piece__collection--wrapper {
+		margin-bottom: 10px;
+	  max-width: 400px;
+	  padding: 10px;
+	  display: block;
+		user-select: none;
+		-webkit-transition: width 0.3s; /* Safari */
+	  transition: width 0.3s;
+
+	}
 }
 
 .piece__meta {
@@ -35,10 +45,16 @@
 }
 
 .piece__left {
+	flex-shrink: 0;
 	// width: 90%; //mobile?
 }
 
 .piece__right {
+  margin-top: 40px;
+	display: none;
+	&.visible {
+		display: flex;
+	}
 	// width: 10%; //mobile?
 }
 
@@ -48,26 +64,20 @@
 
 .piece__wrapper {
 	width: 100%; //mobile
-	justify-content: start;
+	justify-content: center;
   align-items: center;
-	@media (max-width: 600px) {
+  overflow-y: scroll;
+	overflow-x: hidden;
+	// @media (max-width: 600px) {
 		flex-direction: column;
-	}
-	@media (min-width: 600px) {
-		flex-direction: row;
-	}
+	// }
+	// @media (min-width: 600px) {
+	// 	flex-direction: row;
+	// }
 	// width: 435px;
 	// height: 720px;
 }
 
-.piece__collection--wrapper {
-	user-select: none;
-	-webkit-transition: width 0.3s; /* Safari */
-  transition: width 0.3s;
-	&.active {
-		width: 210px;
-	}
-}
 .piece__collection {
 	.article__title {
 		font-family: 'clemente';

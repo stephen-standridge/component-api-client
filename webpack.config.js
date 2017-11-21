@@ -28,5 +28,5 @@ var chunkWebpackPlugin = new webpack.optimize.CommonsChunkPlugin({ name: 'vendor
 
 config.plugins.push(nodeEnvPlugin, cleanWebpackPlugin, chunkWebpackPlugin);
 config.output.filename = filename;
-
+config.watch = true;
 module.exports = config;

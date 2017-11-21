@@ -26,8 +26,8 @@ const OuroborosPieceComponent = React.createClass({
 								outerClass={'outer'}
 								innerClass={'inner'}
 								middleClass={'middle'}
-								width={backgroundSize}
-								height={backgroundSize}
+								width={600}
+								height={600}
 								scaleX={2.0}
 								scaleY={2.0} />
 
@@ -39,7 +39,9 @@ const OuroborosPieceComponent = React.createClass({
 								colorClass={color}
 								scale={ouroborosScale}
 								strokeClass={''}
-								fillClass={''} />
+								fillClass={''}
+								width={700}
+								height={700}/>
 				  	</svg>
 				  </div>
 		  	</div>

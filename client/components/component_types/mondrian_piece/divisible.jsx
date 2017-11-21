@@ -16,6 +16,7 @@ class Divisible extends React.Component {
               x={ coords.x + offset.x }
               y={ coords.y + offset.y }
               style={ { stroke: 'black', strokeWidth: 3 } }
+              fill={`none`}
             ></rect>
             { cells.map( function( cell ) {
               return cell && <rect className={'rectangle'}

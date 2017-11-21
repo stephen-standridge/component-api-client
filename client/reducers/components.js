@@ -29,7 +29,6 @@ export default function update(state = initialState, action) {
 					}
 					component.media.push(m)
 				})
-				console.warn(media)
 				let componentError ='';
 				component.collections = uniq(collections);
 				components && components.forEach((c) => {

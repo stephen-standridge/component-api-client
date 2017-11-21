@@ -15,7 +15,6 @@ class PieceMetaComponent extends React.Component {
 	render() {
 		const { component, isActive } = this.props;
 		const { slug } = component;
-		console.error(component)
 		return <div className={`piece__right ${component.collections.length > 0 && 'visible'}`}>
 			<div className={`piece__meta--${slug} ${this.classNamesFor('meta')}` }>
 

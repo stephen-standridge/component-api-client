@@ -20,16 +20,6 @@ class LinkMedia extends React.Component {
 		const isEmail = url.split("@").length > 1;
 		const isRouter = link.router;
 		const copiedClass = copied == false ? 'copied_again' : copied == true ? 'copied' : ''
-		// if (isEmail) {
-		// 	return <CopyToClipboard text={url} onCopy={() => this.setState({copied: !this.state.copied})}>
-		// 		<span className={`clickable link__media ${copiedClass}`} >{link.anchor}</span>
-		// 	</CopyToClipboard>
-		// } else if (isRouter) {
-		// 	console.warn(RouterLink)
-		// 	return <a className="link__media clickable" >{link.anchor}</a>
-		// } else {
-		// 	return <a className="link__media clickable" href={link.url} target="_blank">{link.anchor}</a>
-		// }
 		if (needsCreate) {
 			return <div className={`link__media create`}>
 			{`link ${slug} has not been created yet`}

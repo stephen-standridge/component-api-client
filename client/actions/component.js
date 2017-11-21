@@ -15,8 +15,8 @@ const media_types = {
 	'media': 'media'
 };
 const version_types = {
-	'article': 'article_versions',
-	'articles': 'article_versions',
+	// 'article': 'article_versions',
+	// 'articles': 'article_versions',
 	// 'program': 'program_versions',
 	// 'programs': 'program_versions'
 }
@@ -31,7 +31,7 @@ export function fetch(slug='index'){
 			programs: [],
 			links: [],
 			components: [],
-			article_versions: {},
+			// article_versions: {},
 			// program_versions: {}
 		};
 		dispatch({ type: COMPONENT_ACTIONS.REQUEST, meta })
@@ -44,21 +44,23 @@ export function fetch(slug='index'){
 			media_promises.length && Promise.all(media_promises).then((media_snaps) => {
 				const media_vals = media_snaps.map((m_snap) => m_snap.val());
 				payload.component = assign(payload.component, { media: media_vals });
-				const [m_o_t_promises, m_o_t_types] = fetchMedia(media_vals);
+				const [m_o_t_promises, m_o_t_types, m_o_t_slugs] = fetchMedia(media_vals);
 				m_o_t_promises.length && Promise.all(m_o_t_promises).then((media_of_type_snaps) => {
 					const media_of_type_vals = media_of_type_snaps.map((m_o_t_snap) => m_o_t_snap.val());
 
 					m_o_t_types.forEach((type, index) => {
-						payload[type].push(media_of_type_vals[index]);
+						payload[type].push(media_of_type_vals[index] && media_of_type_vals[index] || { slug: m_o_t_slugs[index], needsCreate: true });
 					})
-					const [version_promises, version_types] = fetchVersions(media_of_type_vals);
-					version_promises.length && Promise.all(version_promises).then((version_snaps) => {
-						const version_vals = version_snaps.map((v_snap) => [v_snap.key, v_snap.val()]);
-						version_types.forEach((type, index) => {
-							payload[type][version_vals[index][0]] = version_vals[index][1];
-						})
-						dispatch({ type: COMPONENT_ACTIONS.SUCCESS, payload, meta });
-					}).catch(boundReportError) || dispatch({ type: COMPONENT_ACTIONS.SUCCESS, payload, meta })
+					// const [version_promises, version_types] = fetchVersions(media_of_type_vals);
+					// version_promises.length && Promise.all(version_promises).then((version_snaps) => {
+					// 	const version_vals = version_snaps.map((v_snap) => [v_snap.key, v_snap.val()]);
+					// 	version_types.forEach((type, index) => {
+					// 		payload[type][version_vals[index][0]] = version_vals[index][1];
+					// 	})
+					// 	dispatch({ type: COMPONENT_ACTIONS.SUCCESS, payload, meta });
+					// }).catch(boundReportError) ||
+					dispatch({ type: COMPONENT_ACTIONS.SUCCESS, payload, meta })
+
 				}).catch(boundReportError) || dispatch({ type: COMPONENT_ACTIONS.SUCCESS, payload, meta });
 			}).catch(boundReportError) || dispatch({ type: COMPONENT_ACTIONS.SUCCESS, payload, meta });
 		}).catch(boundReportError)
@@ -70,8 +72,9 @@ function fetchMedia(media_vals){
 		let data_type = media_types[m_val.type];
 		sum[0].push(database.ref(`${data_type}/${m_val.slug}`).once('value'));
 		sum[1].push(data_type)
+		sum[2].push(m_val.slug)
 		return sum
-	}, [[], []])
+	}, [[], [], []])
 }
 
 function fetchVersions(data_vals) {

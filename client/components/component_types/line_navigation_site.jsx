@@ -9,11 +9,10 @@ class LineNavigationSiteComponent extends React.Component {
 		const { line_navigation } = component;
 		return line_navigation && line_navigation.map((line, lineIndex)=>{
 			const active = line.slug == componentState;
-			console.error(line.slug)
 			return <div key={lineIndex}  className={`line__wrapper ${active ? 'active' : '' }`}>
 				{ active ?
 					<ComponentCreator slug={line.slug}/> :
-					<div onClick={ ()=>{ console.warn(line.slug); setComponentState(line.slug)} } > {line.slug} </div>
+					<div onClick={ ()=>{ setComponentState(line.slug)} } > {line.slug} </div>
 				}
 				</div>
 		});

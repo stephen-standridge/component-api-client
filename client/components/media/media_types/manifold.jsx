@@ -1,15 +1,16 @@
 import { connect } from 'react-redux';
 import * as actions from '../../../actions/manifold'
 var createManifold = require('@stephen.standridge/manifold');
-
+const M = createManifold();
 class ManifoldMedia extends React.Component {
   constructor(props){
     super(props);
-    this.Manifold = createManifold();
+    this.Manifold = M;
     this.configuration;
-    this.scriptElement;
+    this.scriptElements = {};
     this.startManifold = this._startManifold.bind(this);
     this.stopManifold = this._stopManifold.bind(this);
+    this.startOrStop = this._startOrStop.bind(this);
     this.state = {
       hideProgress: false
     }
@@ -48,23 +49,26 @@ class ManifoldMedia extends React.Component {
       const versionId = this.getVersionId();
 
       const { urlPrefix, version_id, slug } = manifold;
+      let configuration = window[`${slug}_${versionId}`];
+      if (configuration) {
+        this.startOrStop(this.props);
+        return
+      }
 
       if(manifold.slug != prevManifold.slug) {
         return get_versions(manifold);
       } else if (!updating) {
         if(versionId !== this.getVersionId(prevProps)){
           if(window[`${slug}_${versionId}`]){
-            this.initializeManifold(prevProps);
+            return this.initializeManifold(prevProps);
           } else  {
             let script = document.createElement('script');
             script.onload = this.initializeManifold.bind(this, prevProps);
             script.src = this.configurationFile(manifold);
             document.body.appendChild(script);
-            this.scriptElement = script;
+            this.scriptElements[`${slug}_${versionId}`] = script;
+            return
           }
-        } else {
-          if(isActive && !prevActive) this._startManifold();
-          if(!isActive && prevActive) this._stopManifold();
         }
       }
 
@@ -77,25 +81,36 @@ class ManifoldMedia extends React.Component {
     this.Manifold.load(`${slug}_${versionId}`, configuration, {
       locateFile: this.locateFile.bind(this),
       locateSource: this.locateFile.bind(this),
-      onInitialize: this.clearManifold.bind(this, prevProps)
-    });
+      onInitialize: this.startOrStop
+    }, this.refs.container);
   }
-  _startManifold(){
-    this.Manifold.start(`${this.getSlug()}_${this.getVersionId()}`)
+  _startOrStop(props=this.props) {
+    if (!props.manifold) return;
+    if (this.props.isActive) {
+      this.Manifold.start(`${this.getSlug(props)}_${this.getVersionId(props)}`)
+    } else {
+      this.Manifold.stop(`${this.getSlug(props)}_${this.getVersionId(props)}`)
+    }
   }
-  _stopManifold(){
-    this.Manifold.stop(`${this.getSlug()}_${this.getVersionId()}`)
+  _startManifold(props=this.props){
+    if(!this.props.isActive) return;
+    if (!props.manifold) return;
+    this.Manifold.start(`${this.getSlug(props)}_${this.getVersionId(props)}`)
   }
-  clearManifold(prevProps){
+  _stopManifold(props=this.props){
+    if (!props.manifold) return;
+    this.Manifold.stop(`${this.getSlug(props)}_${this.getVersionId(props)}`)
+  }
+  clearManifold(prevProps, cleanScript=true){
     const { isActive } = this.props;
     const { manifold } = prevProps.manifold ? prevProps : this.props;
     const { slug } = manifold;
     const versionId = this.getVersionId(prevProps.manifold ? prevProps : this.props);
     if (!versionId || !slug) return;
     this.Manifold.unload(`${slug}_${versionId}`);
-    if (this.sciptElement) {
-      document.body.removeChild(this.scriptElement);
-      this.scriptElement = null;
+    if (this.scriptElements[`${slug}_${versionId}`] && cleanScript) {
+      document.body.removeChild(this.scriptElements[`${slug}_${versionId}`]);
+      this.scriptElements[`${slug}_${versionId}`] = null;
     }
     if(!isActive) {
       this._stopManifold();
@@ -141,7 +156,7 @@ class ManifoldMedia extends React.Component {
 
   render(){
     const { manifold } = this.props;
-    return (<div className={this.classNamesFor('component')}>
+    return (<div className={this.classNamesFor('component')} ref={"container"}>
       { this.renderLoadingMaybe() }
       { this.renderCanvases() }
       <div className={this.classNamesFor('status')}>{  }</div>

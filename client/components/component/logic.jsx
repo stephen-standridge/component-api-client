@@ -16,7 +16,6 @@ class ComponentLogic extends React.Component {
 	}
 
 	componentWillUnmount(args) {
-		console.warn(args)
 		const { slug, component } = this.props;
 		const options = component && component.options;
 		const withHistory = options && options.history;

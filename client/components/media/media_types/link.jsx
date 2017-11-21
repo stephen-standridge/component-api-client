@@ -15,7 +15,7 @@ class LinkMedia extends React.Component {
 	render(){
 		const { link } = this.props;
 		if (!link) return <div className={this.classNamesFor('not_found')} />
-		const { url, anchor } = link;
+		const { url, anchor, needsCreate } = link;
 		const { copied } = this.state;
 		const isEmail = url.split("@").length > 1;
 		const isRouter = link.router;
@@ -30,7 +30,11 @@ class LinkMedia extends React.Component {
 		// } else {
 		// 	return <a className="link__media clickable" href={link.url} target="_blank">{link.anchor}</a>
 		// }
-
+		if (needsCreate) {
+			return <div className={`link__media create`}>
+			{`link ${slug} has not been created yet`}
+			</div>
+		}
 		return isEmail ? <CopyToClipboard text={url}
 																			onCopy={() => this.setState({copied: !this.state.copied})}>
 																			<span className={`clickable link__media ${copiedClass}`} >{link.anchor}</span>

@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import { COMPONENT_ACTIONS } from '../actions/action_types'
-import { uniq } from 'lodash';
+import { uniq, orderBy } from 'lodash';
 
 const initialState = fromJS({
 })
@@ -17,7 +17,7 @@ export default function update(state = initialState, action) {
 				component.media = [];
 				component.states = [];
 				let collections = [];
-				media && media.forEach((m,i)=>{
+				media && orderBy(media, ['order']).forEach((m,i)=>{
 					const { collection, state } = m;
 					if (collection) {
 						component[collection] = component[collection] || [];
@@ -29,6 +29,7 @@ export default function update(state = initialState, action) {
 					}
 					component.media.push(m)
 				})
+				console.warn(media)
 				let componentError ='';
 				component.collections = uniq(collections);
 				components && components.forEach((c) => {

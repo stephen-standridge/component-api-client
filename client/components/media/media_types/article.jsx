@@ -20,9 +20,14 @@ class ArticleMedia extends React.Component {
 		return `article__${part} ${classNames && classNames[part] || ''} ${active[part] ? 'active' : ''}`
 	}
 	render(){
-		const { article, classNames } = this.props;
+		const { slug, article, classNames, needsCreate } = this.props;
 		if (!article) return <div className={this.classNamesFor('not_found')} />
 		const { title, body } = article;
+		if (needsCreate) {
+			return <div className={`${this.classNamesFor('wrapper')}`}>
+			{`article ${slug} has not been created yet`}
+			</div>
+		}
 		return <div className={`${this.classNamesFor('wrapper')}`}>
 			{ title && <div className={`${this.classNamesFor('title')}`}
 											onClick={this.toggleActive.bind(this, 'title')}>
@@ -38,10 +43,7 @@ class ArticleMedia extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
 	const article = state.media.getIn(['articles', ownProps.slug]);
-	const [...version_ids] = article && article.get('article_versions').keys();
-	const version = article && state.versions.getIn(['article_versions', version_ids[0]]);
-	const toDisplay = article && version ? article.merge(version).toJS() : article.toJS();
-  return { article: toDisplay };
+  return { article: article &&  article.toJS() };
 }
 
 const Article = connect(

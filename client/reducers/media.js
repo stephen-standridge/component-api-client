@@ -7,7 +7,7 @@ export default function update(state = initialState, action) {
 	switch(action.type) {
 		case COMPONENT_ACTIONS.SUCCESS:
 			const { articles, links, programs } = action.payload;
-			articles && articles.forEach((article)=>{
+			articles && articles.forEach((article, index)=>{
 				state = state.setIn(['articles', article.slug], fromJS(article))
 			})
 			links && links.forEach((link)=>{

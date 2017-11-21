@@ -1,6 +1,12 @@
 .line_navigation_site_component {
 	// justify-content: center;
 	// align-items: center;
+	.line__item {
+		display: none;
+		&.active {
+			display: flex;
+		}
+	}
 }
 
 .line__navigation-contact, .line__navigation-meta {
@@ -100,6 +106,7 @@
 	position: absolute;
   align-items: center;
   justify-content: center;
+  ;
 	&.active {
 		margin: auto;
 		left: 0;

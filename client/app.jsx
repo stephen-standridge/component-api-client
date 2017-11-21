@@ -18,7 +18,7 @@ ReactDOM.render(
       <Router history={history}>
         <Route path="/*" component={(props,state) => {
           return <ParamProvider {...props}>
-            <ComponentCreator slug={'staging'} />
+            <ComponentCreator slug={'staging'} isActive={true}/>
           </ParamProvider>
         } } />
       </Router>

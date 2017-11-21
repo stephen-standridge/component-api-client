@@ -10,7 +10,7 @@ class LineComponent extends React.Component {
 
 		const nextIndex = (selectedIndex + 1);
 		const nextState = nextIndex <= component.states.length - 1 ? component.states[nextIndex] : component.states[0];
-		return <div className={`line__container ${classNames} clickable`}>
+		return <div className={`line__container ${classNames} `}>
 			<div className="line__items">
 				{ component && component.views.map((c, index) => {
 					let isLongEnough = component.views.length > 1;

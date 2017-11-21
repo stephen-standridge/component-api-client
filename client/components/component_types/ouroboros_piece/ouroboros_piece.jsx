@@ -18,7 +18,8 @@ const OuroborosPieceComponent = React.createClass({
 						<svg id="ouroboros"
 							height={this.totalHeight()}
 							width={this.totalWidth()}
-							onClick={this.changeColor}>
+							onClick={this.changeColor}
+							viewBox={`0 0 ${this.totalWidth()} ${this.totalHeight()}`}>
 
 							<BackgroundLines {...this.state}
 								colorClass={color}

@@ -1,4 +1,7 @@
 .line_navigation_site_component {
+	justify-content: center;
+}
+.line_navigation_site_component {
 	// justify-content: center;
 	// align-items: center;
 	.line__item {
@@ -92,6 +95,7 @@
 }
 .line__items {
 	display: flex;
+	width: 100%;
 	height: 100%;
 	position: relative;
 }
@@ -101,12 +105,9 @@
 }
 
 .line__item {
-	height: 100%;//mobile?
-
-	position: absolute;
+	flex: 1;
   align-items: center;
   justify-content: center;
-  ;
 	&.active {
 		margin: auto;
 		left: 0;

@@ -7,6 +7,7 @@ class Divisible extends React.Component {
     const { dimensions, coords, color } = root;
     return <svg height={dimensions.height + dimensions.paddingHeight}
                 width={dimensions.width + dimensions.paddingWidth}
+                viewBox={`0 0 ${dimensions.height + dimensions.paddingHeight} ${dimensions.width + dimensions.paddingWidth}`}
                 className={ className } >
       <g>
             <rect

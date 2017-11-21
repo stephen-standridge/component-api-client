@@ -45,7 +45,8 @@ module.exports = {
   plugins: [
     extractCSS, new HtmlWebpackPlugin({
       title: 'Form is Function',
-      filename: 'index.html'
+      filename: 'index.html',
+      template: 'index.html'
     }),
     new webpack.ProvidePlugin({
       'React':      'react',

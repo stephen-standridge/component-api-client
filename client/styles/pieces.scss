@@ -1,3 +1,4 @@
+
 .piece__container {
 	height: 100%; //mobile
 	width: 100%; //mobile
@@ -13,14 +14,20 @@
 
 .piece__content {
 	// height: 90%; //mobile
-	&.bordered {
-		border: 2px solid;
-	}
-	&.green{
-		border-color:#52BC46;
-	}
-	&.purple{
-		border-color:#A745BF;
+
+	@media (max-width: 700px) {
+		canvas {
+			width: 100vw !important;
+			height: 100vw !important;
+			max-width: 100%;
+			max-height: 100%;
+		}
+		svg {
+			width: 100vw !important;
+			height: 100vw !important;
+			max-width: 100%;
+			max-height: 100%;
+		}
 	}
 }
 
@@ -43,9 +50,14 @@
 
 .piece__wrapper {
 	width: 100%; //mobile
-	flex-direction: row;
-	justify-content: felx-start;
+	justify-content: start;
   align-items: center;
+	@media (max-width: 700px) {
+		flex-direction: column;
+	}
+	@media (min-width: 700px) {
+		flex-direction: row;
+	}
 	// width: 435px;
 	// height: 720px;
 }

@@ -6,10 +6,9 @@ class LineComponent extends React.Component {
 		const { slug, component, componentState, classNames, setComponentState } = this.props;
 		const selectedIndex = component.states.findIndex((c)=> c == componentState) || 0;
 		const prevIndex = (selectedIndex - 1);
-		const prevState = prevIndex >= 0 ? component.states[prevIndex] : component.states[component.states.length - 1];
-
+		const prevState = prevIndex >= 0 ? component.states[prevIndex] : false;
 		const nextIndex = (selectedIndex + 1);
-		const nextState = nextIndex <= component.states.length - 1 ? component.states[nextIndex] : component.states[0];
+		const nextState = nextIndex <= component.states.length - 1 ? component.states[nextIndex] : false;
 		return <div className={`line__container ${classNames} `}>
 			<div className="line__items">
 				{ component && component.views.map((c, index) => {

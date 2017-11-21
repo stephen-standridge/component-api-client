@@ -17,8 +17,13 @@ html {
   font-size: 15px;
 }
 
-html, body {
-    height: 100%;
+html,
+body {
+  //disable elastic scroll
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 .p {

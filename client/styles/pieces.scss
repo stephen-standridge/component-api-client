@@ -12,6 +12,14 @@
 	  transition: width 0.3s;
 
 	}
+	.piece__right {
+	  margin-top: 40px;
+		display: none;
+		&.visible {
+			display: flex;
+		}
+		// width: 10%; //mobile?
+	}
 }
 
 .piece__meta {
@@ -49,14 +57,7 @@
 	// width: 90%; //mobile?
 }
 
-.piece__right {
-  margin-top: 40px;
-	display: none;
-	&.visible {
-		display: flex;
-	}
-	// width: 10%; //mobile?
-}
+
 
 .piece__left, .piece__right {
 	flex-direction: column;
@@ -66,8 +67,6 @@
 	width: 100%; //mobile
 	justify-content: center;
   align-items: center;
-  overflow-y: scroll;
-	overflow-x: hidden;
 	// @media (max-width: 600px) {
 		flex-direction: column;
 	// }

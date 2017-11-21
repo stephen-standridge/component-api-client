@@ -35,14 +35,14 @@ class ComponentLogic extends React.Component {
 			fetch(slug);
 		}
 		const options = component && component.options;
-		const withHistory = options && options.history && active;
+		const withHistory = options && options.history;
 
 		const currentComponent = this.props.component;
 		const currentSlug = this.props.slug;
 		const currentOptions = currentComponent && currentComponent.options;
 		const withHistoryCurrently = currentOptions && currentOptions.history;
 
-		if (withHistory && !isRegistered(slug) && active) {
+		if (withHistory && !isRegistered(slug)) {
 			if (isRegistered(currentSlug)) {
 				//if the current component is registered, switch the registration it
 				register(slug, otherSlug);
@@ -61,7 +61,7 @@ class ComponentLogic extends React.Component {
 	_setComponentState(current) {
 		const { slug, component, active } = this.props;
 		const { setParam } = this.context;
-		const withHistory = component && component.options && component.options.history && active;
+		const withHistory = component && component.options && component.options.history;
 		return this.setState({ current }, () =>{ if (withHistory) setParam(slug, current) })
 	}
 
@@ -69,7 +69,7 @@ class ComponentLogic extends React.Component {
 		const { slug, component, active } = this.props;
 		const { getParam } = this.context;
 		const { current } = this.state;
-		const withHistory = component && component.options && component.options.history && active;
+		const withHistory = component && component.options && component.options.history;
 		return withHistory ? getParam(slug) : current;
 	}
 

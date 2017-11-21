@@ -4,7 +4,7 @@ const Ouroboros = React.createClass({
 	render(){
 		const { colorClass, strokeClass, fillClass, scale } = this.props;
 		return(
-			<g transform={`translate(0, -100)`}>
+			<g transform={`translate(0, -110)`}>
 			<g className="ouroboros__rotate" transform={`scale(${scale})`}>
 				<path className={`ouroboros__fill ouroboros__stroke--bold ${colorClass} ${fillClass} ${strokeClass}`}
 					d="M206.3,452.1c-23.8-2-50.4-10-70.8-21l-24.4,14.3l0.2-30.2c-19.4-14.8-36.2-33.7-48.9-55.1H35.6L50,335.7

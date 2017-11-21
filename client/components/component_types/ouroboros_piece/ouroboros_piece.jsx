@@ -14,7 +14,7 @@ const OuroborosPieceComponent = React.createClass({
 		return <div className="piece__container piece__container--ouroboros">
 			<div className="piece__wrapper piece__wrapper--ouroboros">
 				<div className="piece__left">
-					<div className="piece__content">
+					<div className={`piece__content ${color}`}>
 						<svg id="ouroboros"
 							height={this.totalHeight()}
 							width={this.totalWidth()}
@@ -54,7 +54,7 @@ const OuroborosPieceComponent = React.createClass({
 		    height: 768,
 		    paddingWidth: 0,
 		    paddingHeight: 0,
-		    ouroborosScale: 768/480,
+		    ouroborosScale: 768/420,
 		    backgroundSize: 600,
 		    backgroundScaleX: 768/320,
 		    backgroundScaleY: 768/600,

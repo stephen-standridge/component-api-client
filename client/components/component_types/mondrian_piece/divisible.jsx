@@ -29,6 +29,11 @@ class Divisible extends React.Component {
             </g>
     </svg>
   }
+  componentDidMount() {
+    let seed = Math.random();
+    let dir = (seed < 0.25  && { x: 1, y: 0 }) || (seed < 0.5 && { x: 0, y: 1 }) || (seed < 0.75 &&{ x: -1, y: 0 }) || { x: 0, y: -1 }
+    this.props.divide( this.props.cells[0], dir)
+  }
   generateStyles( cell ) {
     const { value, __l, __n } = cell;
     const { dimensions, coords } = value;

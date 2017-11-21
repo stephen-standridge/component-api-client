@@ -7,16 +7,16 @@ import * as media from '../../media';
 import '../../../styles/pieces.scss';
 import { PieceMetaComponent } from '../piece_meta';
 
-const HEIGHT = 600
-const WIDTH = 300;
+const HEIGHT = 765
+const WIDTH = 765;
 
 class MondrianPieceComponent extends React.Component {
   constructor(props){
     super(props);
     let state = {
       pixel: 15,
-      offset: { x: -1, y: -1 },
-      mutation: 25,
+      offset: { x: 0, y: 0 },
+      mutation: 45,
       counter: {x: 0, y: 0},
       color: [255, 255, 255, 1],
       structure: {
@@ -27,12 +27,12 @@ class MondrianPieceComponent extends React.Component {
         data: [{
           value: {
             canDivide: true,
-            coords: {x: 68, y:25},
+            coords: {x: 0, y:0},
             dimensions: {
               width: WIDTH,
               height: HEIGHT,
-              paddingWidth: 135,
-              paddingHeight: 50
+              paddingWidth: 0,
+              paddingHeight: 0
             },
             color: 'rgba(255,255,255,1)',
           }
@@ -171,10 +171,10 @@ class MondrianPieceComponent extends React.Component {
     cells = cells.map( (item, index) =>{
       if( index == cells.size-1 ){
         return item.set( 'color', parent.get('color') );
-      }else if (Math.random() > 0.33) {
+      } else if (Math.random() > 0.33) {
         return item.set( 'color', this.color.rybRandom().rgba() )
       } else {
-        return item
+        return item.set( 'color', this.color.white().rgba() )
       }
     })
     return cells

@@ -14,13 +14,15 @@ const BackgroundLines = React.createClass({
 			scaleX,
 			scaleY
 		} = this.props;
+		const x = 85;
+		const y = 75;
 
 		return(
 			<g className="background__lines">
 				<defs>
 					<pattern id="linework" patternUnits="userSpaceOnUse" width={this.props.width * 2} height={this.props.height * 2}>
 						<g transform={`scale(${scaleX},${scaleY})`}>
-							<g transform={`translate(-50,-170)`}>
+							<g transform={`translate(${-26},${-130})`}>
 							<path id="bg1"
 								className={`background__line outer ${outerClass} ${colorClass}`}
 								d="M49,797.5l0.2-149.6l4.1-3.6V484.1l18.1-18.1l0.1-16.8l12-12l-0.1-91.6l-12-12.1l-0.1-16.8l-18-18.1V138.4l-4.1-3.6L49-14.8"/>
@@ -191,11 +193,11 @@ const BackgroundLines = React.createClass({
 							</g>
 						</g>
 					</pattern>
-					<rect id="background__shape" x="35" y="29.1" width={this.props.width} height={this.props.height}/>
+					<rect id="background__shape" x={x} y={y} width={this.props.width} height={this.props.height}/>
 				</defs>
 				<g className={`background__border ${colorClass}`} dangerouslySetInnerHTML={{__html: useTag }}>
 				</g>
-				<rect x="35" y="29.1" width={this.props.width} height={this.props.height} fill={"url(#linework)"}/>
+				<rect x={x} y={y} width={this.props.width} height={this.props.height} fill={"url(#linework)"}/>
 
 
 			</g>
